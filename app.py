@@ -66,10 +66,10 @@ def login():
 
         user = User.query.filter_by(username=username).first()
 
-        if user and user.password == password:
+        if user and user.password == password: 
             login_user(user)
             flash('Login successful.', 'success')
-            return 'login success'
+            return render_template('dashboard.html')
         else:
             flash('Invalid username or password. Please try again.', 'error')
     
@@ -82,4 +82,4 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
